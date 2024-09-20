@@ -1,5 +1,1 @@
-pip install Flask-WTF
-pip install WTForms
 pip install Flask
-pip install Flask-SQLAlchemy
-pip install Flask-Mail
