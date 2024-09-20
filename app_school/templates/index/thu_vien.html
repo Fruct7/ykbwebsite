@@ -1,0 +1,157 @@
+{% extends "web_layout/trang-chu-master.html" %}
+{% block head %}
+
+{{ super()}}
+{% block title %} Trang thư viện {% endblock %}
+
+<!-- Magnific popup -->
+<link href="{{ url_for('static', filename= 'plugins/magnific-popup/magnific-popup.css') }}" rel="stylesheet"
+    type="text/css">
+
+{% endblock %}
+
+<!-- Content Block -->
+
+{% block content %}
+
+
+<div class="content">
+    <div class="col-lg-12 vh-80">
+        <div class="card bg-light h-80">
+            <div class="card-body">
+
+                <h4 class="mt-0 header-title">Thư viện</h4>
+                <p class="text-muted m-b-30">Bộ sưu tập hình ảnh của trường</p>
+
+                <div class="zoom-gallery">
+                    <div class="col-md-4 col-lg-4 col-xl-3 mb-5">
+                        <a class="float-left" href="{{ url_for('static' , filename ='trang_chu/images/work1.jpg') }}"
+                            title="Project 1">
+                            <div class="img-responsive card btn btn-success">
+                                <img src="{{ url_for('static' , filename ='trang_chu/images/work1.jpg') }}" alt=""
+                                    width="120">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-lg-4 col-xl-3 mb-5">
+                        <a class="float-left" href="{{ url_for('static' , filename ='trang_chu/images/work2.jpg') }}"
+                            title="Project 1">
+                            <div class="img-responsive card btn btn-success">
+                                <img src="{{ url_for('static' , filename ='trang_chu/images/work2.jpg') }}" alt=""
+                                    width="120">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-lg-4 col-xl-3 mb-5">
+                        <a class="float-left" href="{{ url_for('static' , filename ='trang_chu/images/work3.jpg') }}"
+                            title="Project 1">
+                            <div class="img-responsive card btn btn-success">
+                                <img src="{{ url_for('static' , filename ='trang_chu/images/work3.jpg') }}" alt=""
+                                    width="120">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-lg-4 col-xl-3 mb-5">
+                        <a class="float-left" href="{{ url_for('static' , filename ='trang_chu/images/work4.jpg') }}"
+                            title="Project 1">
+                            <div class="img-responsive card btn btn-success">
+                                <img src="{{ url_for('static' , filename ='trang_chu/images/work4.jpg') }}" alt=""
+                                    width="120">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-lg-4 col-xl-3 mb-5">
+                        <a class="float-left" href="{{ url_for('static' , filename ='trang_chu/images/work5.jpg') }}"
+                            title="Project 1">
+                            <div class="img-responsive card btn btn-success">
+                                <img src="{{ url_for('static' , filename ='trang_chu/images/work5.jpg') }}" alt=""
+                                    width="120">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-lg-4 col-xl-3 mb-5">
+                        <a class="float-left" href="{{ url_for('static' , filename ='trang_chu/images/work6.jpg') }}"
+                            title="Project 1">
+                            <div class="img-responsive card btn btn-success">
+                                <img src="{{ url_for('static' , filename ='trang_chu/images/work6.jpg') }}" alt=""
+                                    width="120">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-lg-4 col-xl-3 mb-5">
+                        <a class="float-left" href="{{ url_for('static' , filename ='trang_chu/images/work7.jpg') }}"
+                            title="Project 1">
+                            <div class="img-responsive card btn btn-success">
+                                <img src="{{ url_for('static' , filename ='trang_chu/images/work7.jpg') }}" alt=""
+                                    width="120">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-lg-4 col-xl-3 mb-5">
+                        <a class="float-left" href="{{ url_for('static' , filename ='trang_chu/images/work8.jpg') }}"
+                            title="Project 1">
+                            <div class="img-responsive card btn btn-success">
+                                <img src="{{ url_for('static' , filename ='trang_chu/images/work8.jpg') }}" alt=""
+                                    width="120">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-lg-4 col-xl-3 mb-5">
+                        <a class="float-left" href="{{ url_for('static' , filename ='trang_chu/images/work9.jpg') }}"
+                            title="Project 1">
+                            <div class="img-responsive card btn btn-success">
+                                <img src="{{ url_for('static' , filename ='trang_chu/images/work9.jpg') }}" alt=""
+                                    width="120">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-lg-4 col-xl-3 mb-5">
+                        <a class="float-left" href="{{ url_for('static' , filename ='trang_chu/images/work10.jpg') }}"
+                            title="Project 1">
+                            <div class="img-responsive card btn btn-success">
+                                <img src="{{ url_for('static' , filename ='trang_chu/images/work10.jpg') }}" alt=""
+                                    width="120">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-lg-4 col-xl-3 mb-5">
+                        <a class="float-left" href="{{ url_for('static' , filename ='trang_chu/images/work11.jpg') }}"
+                            title="Project 1">
+                            <div class="img-responsive card btn btn-success">
+                                <img src="{{ url_for('static' , filename ='trang_chu/images/work11.jpg') }}" alt=""
+                                    width="120">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-lg-4 col-xl-3 mb-5">
+                        <a class="float-left" href="{{ url_for('static' , filename ='trang_chu/images/work12.jpg') }}"
+                            title="Project 1">
+                            <div class="img-responsive card btn btn-success">
+                                <img src="{{ url_for('static' , filename ='trang_chu/images/work12.jpg') }}" alt=""
+                                    width="120">
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+
+<!-- Script block -->
+
+{% block script %}
+
+{{ super()}}
+
+
+<!-- Magnific popup -->
+<script src="{{ url_for('static', filename = 'plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
+<script src="{{ url_for('static', filename = 'assets/pages/lightbox.js') }}"></script>
+
+{% endblock %}

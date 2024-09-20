@@ -1,0 +1,105 @@
+{% extends "web_layout/giao-vien-master.html" %}
+
+<!-- Header Block -->
+
+{% block head %}
+
+{{ super()}}
+
+{% endblock %}
+
+<!-- Content Block -->
+
+{% block content %}
+
+<!-- Start content -->
+<div class="content">
+    <div class="container-fluid">
+        <div class="card-body">
+
+            <h4 class="mt-0 header-title">Sửa Hoạt Động</h4>
+            <form method="POST">
+                {{ form.csrf_token }}
+                <div class="form-group row">
+
+                    {{ form.Th_TieuDe.label(for="example-text-input",class="col-sm-2 col-form-label") }}
+                    <div class="col-sm-10">
+                        {{ form.Th_TieuDe(class="form-control",id="example-text-input",placeholder="Nhập Tiêu Đề", value = hoat_dong.TieuDe) }}
+                    </div>
+                    {% if form.Th_TieuDe.errors %}
+                    <ul class=errors>
+                        {% for error in form.Th_TieuDe.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>   
+                <div class="form-group row">
+                    {{ form.Th_NoiDung.label(for="example-text-input",class="col-sm-2 col-form-label") }}
+                    <div class="col-sm-10" >
+                        <textarea name = "Th_NoiDung" class="form-control",id="example-text-input",placeholder="Nhập Nội Dung">{{ hoat_dong.NoiDung }}</textarea>
+                    </div>
+                </div>                                      
+                <div class="form-group row">
+                    {{ form.Th_HanDangKy.label(for="example-text-input",class="col-sm-2 col-form-label") }}
+                    <div class="col-sm-10">
+                        {{ form.Th_HanDangKy(class="form-control",type="date",value=hoat_dong.ThoiHanDangKy,id="example-date-input") }}
+                    </div>
+                    {% if form.Th_HanDangKy.errors %}
+                    <ul class=errors>
+                        {% for error in form.Th_HanDangKy.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>                   
+                <div class="form-group row">
+                    {{ form.Th_Nien_khoa.label(for="example-text-input",class="col-sm-2 col-form-label") }}
+                    <div class="col-sm-10">
+                        {{ form.Th_Nien_khoa(class="form-control",id="example-text-input") }}
+                    </div>
+                </div> 
+                <div class="form-check">
+                        <label class="form-check-label">
+                             {% if hoat_dong.Khoi_10 == 1 %}
+                                <input name = "Th_Khoi" type="checkbox" class="form-check-input" value = '1' checked>Khối 10
+                             {% else %}   
+                                <input name = "Th_Khoi" type="checkbox" class="form-check-input" value = '1' >Khối 10
+                            {% endif %}
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                             {% if hoat_dong.Khoi_11 == 1 %}
+                                <input name = "Th_Khoi" type="checkbox" class="form-check-input" value = '2' checked>Khối 11
+                             {% else %}   
+                                <input name = "Th_Khoi" type="checkbox" class="form-check-input" value = '2' >Khối 11
+                            {% endif %}
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                             {% if hoat_dong.Khoi_12 == 1 %}
+                                <input name = "Th_Khoi" type="checkbox" class="form-check-input" value = '3' checked>Khối 12
+                             {% else %}   
+                                <input name = "Th_Khoi" type="checkbox" class="form-check-input" value = '3' >Khối 12
+                            {% endif %}
+                        </label>
+                    </div>
+                <button type="submit" class="btn btn-primary waves-effect waves-light float-right">Cập Nhật</button>
+            </form>
+        </div>
+    </div>
+    <!-- container-fluid -->
+</div>
+<!-- content -->
+
+{% endblock %}
+
+<!-- Script block -->
+
+{% block script %}
+
+{{ super()}}
+
+{% endblock %}

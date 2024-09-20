@@ -1,0 +1,86 @@
+{% extends "web_layout/trang-chu-master.html" %}
+{% block head %}
+
+{{ super()}}
+{% block title %} Trang thông tin {% endblock %}
+
+{% endblock %}
+
+<!-- Content Block -->
+
+{% block content %}
+<style>
+    body {
+        background-color: #252735;
+    }
+
+    .card {
+        border-radius: 10px;
+    }
+</style>
+<div class="content">
+    <div class="container-fluid">
+        <div class="page-title-box">
+            <div class="row align-items-center">
+
+                <div class="col-sm-6">
+                    <h4 class="page-title">Thông tin</h4>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-lg-6 col-xl-5">
+                        <div class="card h-100">
+                            <img class="img-thumbnail card-img-top" alt="400x400" width="200"
+                                src="{{ url_for('static', filename = 'trang_chu/images/bgykb.jpg') }}"
+                                data-holder-rendered="true" alt="Card image cap">
+
+                            <div class="card-body">
+                                <h4 class="card-title font-16 mt-0 text-center" style="color: whitesmoke;"> Hình ảnh
+                                    Trường THPT Yên Khánh B năm
+                                    2024</h4>
+                            </div>
+                        </div>
+
+                    </div><!-- end col -->
+
+                    <div class="col-md-6 col-lg-6 col-xl-7">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <p style="color:whitesmoke"><b>Học tập sáng tạo - Rèn Luyện chăm ngoan - Vui chơi lành
+                                        mạnh</b><br />
+                                    <br>
+                                    Trường THPT Yên Khánh B được thành lập năm 1966. Các thế hệ học sinh từ mái trường
+                                    đã trưởng thành và đóng góp sức mình trong công cuộc xây dựng và bảo vệ quê hương,
+                                    dất nước. Với những thành tích vượt bậc, Trường THPT Yên Khánh B đã vinh dự được
+                                    nhận nhiều danh hiệu cao quý: Huân chương Lao động Hạng Ba năm 1966, Huân chương Lao
+                                    động Hạng Nhì năm 2003, Huân chương Lao động Hạng Nhất năm 2009, Bằng khen của Thủ
+                                    tướng Chính Phủ, Cờ thi đua của Bộ GD&DT... <br>
+                                    <br>
+                                    Trường THPT Yên Khánh B luôn hướng tới việc phát triẻn toàn diện con người có đạo
+                                    đức, tri thức, văn hóa, sức khỏe, thẩm mỹ và nghề nghiệp; có phẩm chất, năng lực và
+                                    ý thức công dân; có lòng yêu nước, tinh thần dân tộc, trung thành với lý tưởng độc
+                                    lập dân tộc và chủ nghĩa xã hội;phát huy tiềm năng, khả năng sáng tạo của mỗi học
+                                    sinh; nâng cao dân trí, phát triển nguồn nhân lực, bồi dưỡng nhân tài nhằm đáp ứng
+                                    yêu cầu của sự nghiệp xây dựng, bảo vệ Tổ quốc và hội nhập quốc tế.
+                                </p>
+                            </div>
+                        </div><!-- end col -->
+                    </div>
+
+                </div>
+            </div>
+            <!-- container-fluid -->
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+<!-- Script block -->
+
+{% block script %}
+
+{{ super()}}
+
+{% endblock %}

@@ -1,0 +1,139 @@
+{% extends "web_layout/giao-vien-master.html" %}
+
+<!-- Header Block -->
+
+{% block head %}
+
+{{ super()}}
+{% block title %} Giáo viên - Trang chủ {% endblock %}
+
+{% endblock %}
+
+<!-- Content Block -->
+
+{% block content %}
+
+<!-- Start content -->
+<div class="content">
+    <div class="container-fluid">
+        <div class="page-title-box">
+            <div class="row align-items-center">
+
+                <div class="col-sm-6">
+                    <h4 class="page-title">Profile</h4>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active">Học Sinh</li>
+                    </ol>
+
+                </div>
+                <div class="col-sm-6">
+
+                    <div class="float-right d-none d-md-block">
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle arrow-none waves-effect waves-light"
+                                type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="mdi mdi-settings mr-2"></i> Cài đặt
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="/thong-tin-hoc-sinh/{{HocSinh.IDHocSinh}}/sua-hoc-sinh">Chỉnh sửa profile</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-xl-4">
+                <div class="card h-100">
+                    <img class="img-thumbnail card-img-top" alt="200x200" width="200"
+                        src="{{ url_for('static', filename = 'assets/images/small/img-3.jpg') }}"
+                        data-holder-rendered="true" alt="Card image cap">
+
+                    <div class="card-body">
+                        <h4 class="card-title font-16 mt-0">{{ HocSinh.HoVaTen}}</h4>
+                        <p class="card-text">{{ HocSinh.DiaChi}}</p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">{{ HocSinh.NgaySinh}}</li>
+                            <li class="list-group-item">{{ HocSinh.GioiTinh}}</li>
+                            <li class="list-group-item">{{ HocSinh.SoDienThoai}}</li>
+                            <li class="list-group-item"><a href="/thong-tin-hoc-sinh/{{HocSinh.IDHocSinh}}/sua-hoc-sinh">Chỉnh sửa profile</a></li>
+                        </ul>
+                    
+                    </div>
+                </div>
+            </div><!-- end col -->
+
+            <div class="col-md-6 col-lg-6 col-xl-8">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="card-header">
+                            <h4>Thông tin cá nhân</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-borderless mb-0">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Họ và Tên</th>
+                                            <td>{{ HocSinh.HoVaTen}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Giới tính</th>
+                                            <td>{{ HocSinh.GioiTinh}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Ngày sinh</th>
+                                            <td>{{ HocSinh.NgaySinh}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Địa chỉ</th>
+                                            <td>{{ HocSinh.DiaChi}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Số điện thoai</th>
+                                            <td>{{ HocSinh.SoDienThoai}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Email</th>
+                                            <td>{{ HocSinh.Email}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Số Điện Thoại Phụ Huynh</th>
+                                            <td>{{ HocSinh.SoDienThoaiPH}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Lớp</th>
+                                            <td>{{ HocSinh.Lop}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Niên Khóa</th>
+                                            <td>{{ HocSinh.NienKhoa}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- end col -->
+            </div>
+
+        </div>
+    </div>
+    <!-- container-fluid -->
+
+</div>
+<!-- content -->
+
+
+
+{% endblock %}
+
+<!-- Script block -->
+
+{% block script %}
+
+{{ super()}}
+
+{% endblock %}

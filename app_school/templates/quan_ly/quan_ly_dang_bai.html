@@ -1,0 +1,91 @@
+{% extends "web_layout/quan-ly-master.html" %}
+{% block head %}
+{{ super()}}
+{% block title %} Quản lý bài đăng {% endblock %}
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="col-md-12" style="text-align: center;">
+                    <h2 style="color: whitesmoke;">Quản lý bài đăng</h2>
+                    <br />
+                    <div class="row">
+                        {% for bai_dang in bai_dang_list|sort(attribute='ngay_dang', reverse=true) %}
+                        <div class="col-sm-12 form-group">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ bai_dang.tieu_de }}</h5>
+                                    <p class="card-text">{{ bai_dang.noi_dung }}</p>
+                                    <p class="card-text"><small class="text-muted">Ngày đăng: {{ bai_dang.ngay_dang
+                                            }}</small></p>
+
+                                    <!-- Thêm các nút chức năng -->
+                                    <form method="POST" action="{{ url_for('trang_dang_bai') }}">
+                                        <input type="hidden" name="id" value="{{ bai_dang.id }}">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                            data-target="#editModal{{ bai_dang.id }}">Sửa</button>
+                                        <button type="submit" name="action" value="delete" class="btn btn-danger"
+                                            onclick="return confirm('Bạn có chắc chắn muốn xóa bài đăng này?')">Xóa</button>
+                                        {% if bai_dang.an %}
+                                        <button type="submit" name="action" value="show"
+                                            class="btn btn-success">Hiện</button>
+                                        {% else %}
+                                        <button type="submit" name="action" value="hide"
+                                            class="btn btn-warning">Ẩn</button>
+                                        {% endif %}
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal chỉnh sửa bài đăng -->
+                        <div class="modal fade" id="editModal{{ bai_dang.id }}" tabindex="-1" role="dialog"
+                            aria-labelledby="editModalLabel{{ bai_dang.id }}" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="editModalLabel{{ bai_dang.id }}">Chỉnh sửa bài đăng
+                                        </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <form method="POST" action="{{ url_for('trang_dang_bai') }}">
+                                        <div class="modal-body">
+                                            <input type="hidden" name="id" value="{{ bai_dang.id }}">
+                                            <input type="hidden" name="action" value="edit">
+                                            <div class="form-group">
+                                                <label for="tieu_de">Tiêu đề</label>
+                                                <input type="text" class="form-control" id="tieu_de" name="tieu_de"
+                                                    value="{{ bai_dang.tieu_de }}" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="noi_dung">Nội dung</label>
+                                                <textarea class="form-control" id="noi_dung" name="noi_dung" rows="3"
+                                                    required>{{ bai_dang.noi_dung }}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Đóng</button>
+                                            <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+{{ super()}}
+{% endblock %}

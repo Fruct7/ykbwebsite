@@ -1,0 +1,86 @@
+{% extends "web_layout/giao-vien-master.html" %}
+
+<!-- Header Block -->
+
+{% block head %}
+
+{{ super()}}
+
+{% endblock %}
+
+<!-- Content Block -->
+
+{% block content %}
+
+<!-- Start content -->
+<div class="content">
+    <div class="container-fluid">
+
+        <div class="page-title-box">
+            <div class="row align-items-center">
+
+                <div class="col-sm-6">
+                    <h4 class="page-title">Sửa Lịch Thi</h4>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+        <div class="row">
+            <div class="col-md-6 m-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="POST">
+                            {{ form.csrf_token() }}
+                            <div class="form-group row">
+                                <div class="col-sm-4 col-form-label"> Niên Khóa </div>
+                                 <div class="col-sm-7 form-control"> {{lich.NienKhoa}} </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-4 col-form-label">Khoi </div>
+                                 <div class="col-sm-7 form-control"> {{lich.Khoi}} </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-4 col-form-label"> Mon </div>
+                                 <div class="col-sm-7 form-control"> {{lich.Mon}} </div>
+                            </div>
+                            <div class="form-group row">
+                                {{form.Th_ThoiGian.label(class="col-sm-4 col-form-label",for="example-text-input") }}
+                                {{form.Th_ThoiGian(class="col-sm-7 form-control",value= lich.ThoiGian, id="example-text-input")}}
+                            </div>
+                            <div class="form-group row">
+                                {{ form.Th_NgayThi.label(for="example-text-input",class="col-sm-2 col-form-label") }}
+                                <div class="col-sm-10">
+                                    {{ form.Th_NgayThi(class="form-control",type="date",value= lich.NgayThi ,id="example-date-input") }}
+                                </div>
+                                {% if form.Th_NgayThi.errors %}
+                                <ul class=errors>
+                                    {% for error in form.Th_NgayThi.errors %}
+                                    <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                            </div>
+                            <div class="form-group text-center">
+                                <input class="btn btn-primary waves-light" type="submit" value="Lưu">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- container-fluid -->
+</div>
+<!-- content -->
+
+{% endblock %}
+
+<!-- Script block -->
+
+{% block script %}
+
+{{ super()}}
+
+{% endblock %}

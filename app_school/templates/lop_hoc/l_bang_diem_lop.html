@@ -1,0 +1,129 @@
+{% extends "web_layout/giao-vien-master.html" %}
+
+<!-- Header Block -->
+
+{% block head %}
+
+{{ super()}}
+
+
+
+<!-- DataTables -->
+<link href="{{ url_for('static', filename = 'plugins/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
+    type="text/css" />
+<link href="{{ url_for('static', filename = 'plugins/datatables/buttons.bootstrap4.min.css') }}" rel="stylesheet"
+    type="text/css" />
+<!-- Responsive datatable examples -->
+<link href="{{ url_for('static', filename = 'plugins/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet"
+    type="text/css" />
+
+{% endblock %}
+
+<!-- Content Block -->
+
+{% block content %}
+
+<!-- Start content -->
+<div class="content">
+    <div class="container-fluid">
+
+        <!-- the hien ten page va options -->
+        <div class="page-title-box">
+            <div class="row align-items-center">
+
+                <div class="col-sm-6">
+                    <h4 class="page-title">Danh sách bảng điểm học sinh</h4>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active">Hiển thị danh sách bảng điểm học sinh theo môn học</li>
+                    </ol>
+
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+
+
+        <!-- bang the hien bang diem cua lop hoc -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="mt-0 header-title">Bảng điểm của lớp học</h4>
+                        {% if ds_hoc_sinh | length != 0 %}
+                        <table class="table table-bordered dt-responsive nowrap"
+                            style="border-collapse: collapse; border-spacing: 1; width: 100%;">
+                            <thead class="bg-primary">
+                                <tr>
+                                    <th>Mã số</th>
+                                    <th>Họ và Tên</th>
+                                    {% for mon in ds_hoc_sinh[0]['bang_diem'].keys() %}
+                                    <th style="width: 7.5%;">{{mon}}</th>
+                                    {% endfor %}
+                                    <th>Điểm TB</th>
+                                    <th>Học Lực</th>
+                                    <th>Options</th>
+                                </tr>
+                            </thead>
+
+
+                            <tbody>
+                                {% for hoc_sinh in ds_hoc_sinh %}
+                                <tr>
+                                    <td>#{{ '{:05d}'.format(hoc_sinh['IDHocSinh']) }}</td>
+                                    <td>{{ hoc_sinh['HoVaTen'] }}</td>
+                                    {% for diem in hoc_sinh['bang_diem'].values() %}
+                                    <td>{{diem['trung_binh'] if diem['trung_binh'] != None else "Chưa chấm" }}</td>
+                                    {% endfor %}
+                                    <td>{{ '{:.1f}'.format(hoc_sinh['trung_binh']) }}</td>
+                                    <td>{{ hoc_sinh['xep_loai'] }}</td>
+                                    <td>
+                                        <a class="btn btn-success waves-effect waves-light"
+                                            href="/thong-tin-diem-so/{{hoc_sinh['IDHocSinh']}}" role="button">Xem
+                                            chi tiết</a>&nbsp;
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        {% else %}
+                        <div class="m-auto text-center"><p class="font-10 italic">Hiện tại lớp chưa có học sinh</p></div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div> <!-- end col -->
+        </div> <!-- end row -->
+
+
+    </div>
+    <!-- container-fluid -->
+</div>
+<!-- content -->
+
+{% endblock %}
+
+<!-- Script block -->
+
+{% block script %}
+
+{{ super()}}
+<!-- Required datatable js -->
+<script src="{{ url_for('static', filename = 'plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ url_for('static', filename = 'plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>
+<!-- Buttons examples -->
+<script src="{{ url_for('static', filename = 'plugins/datatables/dataTables.buttons.min.js') }}"></script>
+<script src="{{ url_for('static', filename = 'plugins/datatables/buttons.bootstrap4.min.js') }}"></script>
+<script src="{{ url_for('static', filename = 'plugins/datatables/jszip.min.js') }}"></script>
+<script src="{{ url_for('static', filename = 'plugins/datatables/pdfmake.min.js') }}"></script>
+<script src="{{ url_for('static', filename = 'plugins/datatables/vfs_fonts.js') }}"></script>
+<script src="{{ url_for('static', filename = 'plugins/datatables/buttons.html5.min.js') }}"></script>
+<script src="{{ url_for('static', filename = 'plugins/datatables/buttons.print.min.js') }}"></script>
+<script src="{{ url_for('static', filename = 'plugins/datatables/buttons.colVis.min.js') }}"></script>
+<!-- Responsive examples -->
+<script src="{{ url_for('static', filename = 'plugins/datatables/dataTables.responsive.min.js') }}"></script>
+<script src="{{ url_for('static', filename = 'plugins/datatables/responsive.bootstrap4.min.js') }}"></script>
+
+<!-- Datatable init js -->
+<script src="{{ url_for('static', filename = 'assets/pages/datatables.init.js') }} "></script>
+
+{% endblock %}

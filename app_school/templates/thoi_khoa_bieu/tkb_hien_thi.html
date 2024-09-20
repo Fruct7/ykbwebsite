@@ -1,0 +1,182 @@
+{% extends "web_layout/giao-vien-master.html" %}
+
+<!-- Header Block -->
+
+{% block head %}
+
+{{ super()}}
+
+
+<!-- Plugins css -->
+<link href="{{url_for('static',filename = 'plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') }}"
+    rel="stylesheet">
+<link href="{{url_for('static',filename = 'plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}"
+    rel="stylesheet">
+<link href="{{url_for('static',filename = 'plugins/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{url_for('static',filename = 'plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css') }}"
+    rel="stylesheet" />
+{% endblock %}
+
+<!-- Content Block -->
+
+{% block content %}
+
+<!-- Start content -->
+<div class="content">
+    <div class="container-fluid">
+
+        <div class="page-title-box">
+            <div class="row align-items-center">
+
+                <div class="col-sm-6">
+                    <h4 class="page-title">Thời khóa biểu</h4>
+                </div>
+                <!-- <div class="col-sm-6">
+
+                    <div class="float-right d-none d-md-block">
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle arrow-none waves-effect waves-light"
+                                type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="mdi mdi-settings mr-2"></i> Cài đặt
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="/sua-profile">Chỉnh sửa profile</a>
+                                <a class="dropdown-item" href="/doi-mat-khau">Đổi mật khẩu</a>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <!-- end row -->
+        <div class="row">
+            <div class="col-md-6 m-auto">
+                <div class="card">
+                    <div class="card-body">
+                        {% if Quyen == '2' %}
+                        <form method="POST">
+                            <div class="form-group">
+                                <label class="control-label">Chọn lớp</label>
+                                <select name="lop_nien_khoa" class="form-control select2">
+                                    {% for nien_khoa in ds_nien_khoa %}
+                                    <optgroup class="bg-secondary" label="{{nien_khoa[1]}}">
+                                        {% for lop in ds_lop %}
+                                        {% if nien_khoa[0]|string == (lop[2]|string) %}
+                                        <option value="{{nien_khoa[0]}}-{{lop[0]}}"
+                                            {% if id_lop|int == lop[0]|int %}selected{% endif %}>{{lop[1]}}</option>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </optgroup>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group text-center">
+                                <input class="btn btn-primary waves-light" type="submit" value="Xác nhận">
+                            </div>
+                        </form>
+                        {% else %}
+                        <form method="POST">
+                            <div class="form-group">
+                                <label class="control-label">Chọn niên khóa</label>
+                                <select name="nien_khoa" class="form-control select2">
+                                    {% for nien_khoa in ds_nien_khoa %}
+                                    <option value="{{nien_khoa[0]}}"
+                                        {% if id_nien_khoa|int == nien_khoa[0]|int %}selected{% endif %}>
+                                        {{nien_khoa[1]}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group text-center">
+                                <input class="btn btn-primary waves-light" type="submit" value="Xác nhận">
+                            </div>
+                        </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <!-- them thoi khoa bieu tai day -->
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Buổi</th>
+                            <th scope="col">Tiết</th>
+                            <th scope="col" style="width: 15%;">Thứ 2</th>
+                            <th scope="col" style="width: 15%;">Thứ 3</th>
+                            <th scope="col" style="width: 15%;">Thứ 4</th>
+                            <th scope="col" style="width: 15%;">Thứ 5</th>
+                            <th scope="col" style="width: 15%;">Thứ 6</th>
+                            <th scope="col" style="width: 15%;">Thứ 7</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="5">Sáng</td>
+                        </tr>
+                        {% for tiet in tkb[0] %}
+                        <tr>
+                            <th scope="row">{{ loop.index }}</th>
+                            {% set id_tiet = loop.index %}
+                            {% for chi_tiet in tiet %}
+                            <td><a {% if Quyen == '2' %}
+                                    href="/cap-nhat-tkb/{{ id_nien_khoa }}/{{ id_lop }}/{{ loop.index + 1 }}/1/{{ id_tiet }}"
+                                    {% endif %}>{{chi_tiet}}</a>
+                            </td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+
+                        <tr>
+                            <td rowspan="5">Chiều</td>
+                        </tr>
+                        {% for tiet in tkb[1] %}
+                        <tr>
+                            <th scope="row">{{ loop.index }}</th>
+                            {% set id_tiet = loop.index %}
+                            {% for chi_tiet in tiet %}
+                            <td><a {% if Quyen == '2' %}
+                                    href="/cap-nhat-tkb/{{ id_nien_khoa }}/{{ id_lop }}/{{ loop.index + 1 }}/2/{{ id_tiet }}"
+                                    {% endif %}>{{chi_tiet}}</a>
+                            </td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div><!-- end col -->
+    </div> <!-- end row -->
+
+</div>
+<!-- container-fluid -->
+</div>
+<!-- content -->
+
+{% endblock %}
+
+<!-- Script block -->
+
+{% block script %}
+
+{{ super()}}
+
+
+<!-- Plugins js -->
+<script
+    src="{{ url_for('static', filename = 'plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}"></script>
+<script src="{{ url_for('static', filename = 'plugins/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
+<script src="{{ url_for('static', filename = 'plugins/select2/js/select2.min.js') }}"></script>
+<script src="{{ url_for('static', filename = 'plugins/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
+<script src="{{ url_for('static', filename = 'plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js') }}"></script>
+<script
+    src="{{ url_for('static', filename = 'plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js') }}"></script>
+
+<!-- Plugins Init js -->
+<script src="assets/pages/form-advanced.js"></script>
+{% endblock %}

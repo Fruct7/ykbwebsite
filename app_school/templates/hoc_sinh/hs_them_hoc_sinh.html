@@ -1,0 +1,137 @@
+{% extends "web_layout/giao-vien-master.html" %}
+
+<!-- Header Block -->
+
+{% block head %}
+
+{{ super()}}
+
+{% endblock %}
+
+<!-- Content Block -->
+
+{% block content %}
+
+<!-- Start content -->
+<div class="content">
+    <div class="container-fluid">
+        <div class="card-body">
+
+            <h4 class="mt-0 header-title">Thêm mới học sinh</h4>
+            <p class="text-muted m-b-30">Thêm học sinh mới cho lớp học</p>
+            <form method="POST">
+                {{ form.csrf_token }}
+                <div class="form-group row">
+                    {{ form.Th_Ho_ten.label(for="example-text-input",class="col-sm-2 col-form-label") }}
+                    <div class="col-sm-10">
+                        {{ form.Th_Ho_ten(class="form-control",id="example-text-input",placeholder="Nhập Họ và Tên") }}
+                    </div>
+                    {% if form.Th_Ho_ten.errors %}
+                    <ul class=errors>
+                        {% for error in form.Th_Ho_ten.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="form-group row">
+                    {{ form.Th_Mat_khau.label(for="example-text-input",class="col-sm-2 col-form-label") }}
+                    <div class="col-sm-10">
+                        {{ form.Th_Mat_khau(class="form-control",id="example-text-input",placeholder="(Option) Nhập mật khẩu - Mặc định '1234'") }}
+                    </div>
+                    {% if form.Th_Mat_khau.errors %}
+                    <ul class=errors>
+                        {% for error in form.Th_Mat_khau.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="form-group row">
+                    {{ form.Th_Gioi_tinh.label(class="col-sm-2 col-form-label") }}
+                    <div class="col-sm-10">
+                        {{ form.Th_Gioi_tinh(class="form-control") }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    {{ form.Th_Ngay_sinh.label(for="example-text-input",class="col-sm-2 col-form-label") }}
+                    <div class="col-sm-10">
+                        {{ form.Th_Ngay_sinh(class="form-control",id="example-text-input",type="date",value="1990-01-01" ) }}
+                    </div>
+                    {% if form.Th_Ngay_sinh.errors %}
+                    <ul class=errors>
+                        {% for error in form.Th_Ngay_sinh.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="form-group row">
+                    {{ form.Th_Dia_chi.label(for="example-text-input",class="col-sm-2 col-form-label") }}
+                    <div class="col-sm-10">
+                        {{ form.Th_Dia_chi(class="form-control",id="example-text-input",placeholder="Nhập Địa chỉ") }}
+                    </div>
+                    {% if form.Th_Dia_chi.errors %}
+                    <ul class=errors>
+                        {% for error in form.Th_Dia_chi.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="form-group row">
+                    {{ form.Th_Sdt.label(for="example-text-input",class="col-sm-2 col-form-label") }}
+                    <div class="col-sm-10">
+                        {{ form.Th_Sdt(class="form-control",id="example-text-input",placeholder="Nhập Số điện thoại cá nhân") }}
+                    </div>
+                    {% if form.Th_Sdt.errors %}
+                    <ul class=errors>
+                        {% for error in form.Th_Sdt.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="form-group row">
+                    {{ form.Th_Sdt_PH.label(for="example-text-input",class="col-sm-2 col-form-label") }}
+                    <div class="col-sm-10">
+                        {{ form.Th_Sdt_PH(class="form-control",id="example-text-input",placeholder="Nhập Số điện thoại phụ huynh") }}
+                    </div>
+                    {% if form.Th_Sdt_PH.errors %}
+                    <ul class=errors>
+                        {% for error in form.Th_Sdt_PH.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="form-group row">
+                    {{ form.Th_Email.label(for="example-text-input",class="col-sm-2 col-form-label") }}
+                    <div class="col-sm-10">
+                        {{ form.Th_Email(class="form-control",id="example-text-input",placeholder="Nhập Địa chỉ Email",type="email") }}
+                    </div>
+                    {% if form.Th_Email.errors %}
+                    <ul class=errors>
+                        {% for error in form.Th_Email.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <button type="submit" class="btn btn-primary waves-effect waves-light float-right" onClick="this.disabled=true; this.value='Sending…';">Cập nhật</button>
+            </form>
+        </div>
+    </div>
+    <!-- container-fluid -->
+</div>
+<!-- content -->
+
+{% endblock %}
+
+<!-- Script block -->
+
+{% block script %}
+
+{{ super()}}
+
+{% endblock %}

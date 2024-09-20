@@ -1,0 +1,64 @@
+{% extends "web_layout/quan-ly-master.html" %}
+{% block head %}
+
+{{ super()}}
+{% block title %} Trang thêm TKB {% endblock %}
+
+{% endblock %}
+
+<!-- Content Block -->
+
+{% block content %}
+<!-- Start content -->
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="page-title-box">
+            <div class="row align-items-center">
+
+                <div class="col-sm-6">
+                    <h4 class="page-title">Danh sách các lớp</h4>
+                </div>
+
+                <div class="row">
+
+                    {% for lop_hoc in danh_sach_lop %}
+                    <!-- hien thi thong tin lop hoc -->
+                    <div class="col-xl-3 col-md-6 mb-4 ">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="color-box bg-primary">
+                                    {{ lop_hoc['TenLop'] }}
+                                </div>
+                                <h5 class="mb-0 m-t-20 text-primary text-center font-18">Thông tin</h5>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item text-center">Sĩ số: <code
+                                            class="highlighter-rouge">{{ lop_hoc['TongSoHS'] }}</code>
+                                    </li>
+                                    <li class="list-group-item text-center">{{ lop_hoc['DiaDiem'] }}</li>
+                                    <li class="list-group-item text-center">{{ lop_hoc['Ten_Khoi'] }}</li>
+                                    <li class="list-group-item text-center">Chủ nhiệm: {{ lop_hoc['Ten_Chu_nhiem'] }}
+                                    </li>
+                                    <li class="list-group-item text-center">Niên khóa: {{ lop_hoc['Ten_Nien_khoa'] }}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div> <!-- end col -->
+                    {% endfor %}
+                    <!-- end col -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<!-- Script block -->
+
+{% block script %}
+
+{{ super()}}
+
+{% endblock %}

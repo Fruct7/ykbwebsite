@@ -1,0 +1,84 @@
+ch{% extends "web_layout/quan-ly-master.html" %}
+{% block head %}
+
+{{ super()}}
+{% block title %} Trang đăng bài {% endblock %}
+
+{% endblock %}
+
+<!-- Content Block -->
+
+{% block content %}
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="col-md-12" style="text-align: center;">
+                    <form action="/quan-li/dang-bai" method="post" enctype="multipart/form-data">
+                        <div>
+                            <h2 style="color: whitesmoke;">Đăng Bài Mới</h2>
+                            <br />
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <input name="title" class="form-control" id="title" placeholder="Tiêu đề" type="text"
+                                    required spellcheck="false" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <textarea name="content" class="form-control" id="content" placeholder="Nội dung"
+                                    required spellcheck="false" autocomplete="off"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <label for="files" class="btn btn-primary">
+                                    <input type="file" name="files" id="files" multiple style="display: none;"
+                                        onchange="showFileName(this);">
+                                    Tải lên files
+                                </label>
+                                <span id="file-name"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <button class="btn btn-primary btn-lg" type="submit" id="btn">Đăng Bài</button>
+                            </div>
+                        </div>
+                        <script language="javascript">
+                            var button = document.getElementById("btn");
+                            button.onclick = function () {
+                                alert("Đăng bài thành công !");
+                            }
+                        </script>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<!-- Script block -->
+
+{% block script %}
+
+{{ super()}}
+
+<script>
+    function showFileName(input) {
+        var files = input.files;
+        if (files) {
+            var fileNames = [];
+            for (var i = 0; i < files.length; i++) {
+                fileNames.push(files[i].name);
+            }
+            document.getElementById('file-name').innerText = fileNames.join(', ');
+        } else {
+            document.getElementById('file-name').innerText = '';
+        }
+    }
+</script>
+
+{% endblock %}

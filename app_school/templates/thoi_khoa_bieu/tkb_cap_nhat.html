@@ -1,0 +1,135 @@
+{% extends "web_layout/giao-vien-master.html" %}
+
+<!-- Header Block -->
+
+{% block head %}
+{% block title %} Cập nhật tkb {% endblock %}
+{{ super()}}
+
+{% endblock %}
+
+<!-- Content Block -->
+
+{% block content %}
+
+<!-- Start content -->
+<div class="content">
+    <div class="container-fluid">
+        <div class="card-body">
+            <h4 class="mt-0 header-title">Chỉ sửa profile</h4>
+            <p class="text-muted m-b-30">Chào mừng bạn đến với trang chỉnh sửa profile</p>
+            <form method="POST">
+                {{ form.csrf_token }}
+                <div class="form-group row">
+
+                    {{ form.Th_Nien_khoa.label(for="example-text-input",class="col-sm-2 col-form-label") }}
+                    <div class="col-sm-10">
+                        {{ form.Th_Nien_khoa(class="form-control",value=chi_tiet['nien_khoa'], id="example-text-input", disabled="disabled") }}
+                    </div>
+                    {% if form.Th_Nien_khoa.errors %}
+                    <ul class=errors>
+                        {% for error in form.Th_Nien_khoa.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="form-group row">
+
+                    {{ form.Th_Lop.label(for="example-text-input",class="col-sm-2 col-form-label") }}
+                    <div class="col-sm-10">
+                        {{ form.Th_Lop(class="form-control",value=chi_tiet['lop'], id="example-text-input", disabled="disabled") }}
+                    </div>
+                    {% if form.Th_Lop.errors %}
+                    <ul class=errors>
+                        {% for error in form.Th_Lop.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="form-group row">
+
+                    {{ form.Th_Thu.label(for="example-text-input",class="col-sm-2 col-form-label") }}
+                    <div class="col-sm-10">
+                        {{ form.Th_Thu(class="form-control",value=chi_tiet['thu'], id="example-text-input", disabled="disabled") }}
+                    </div>
+                    {% if form.Th_Thu.errors %}
+                    <ul class=errors>
+                        {% for error in form.Th_Thu.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="form-group row">
+
+                    {{ form.Th_Buoi.label(for="example-text-input",class="col-sm-2 col-form-label") }}
+                    <div class="col-sm-10">
+                        {{ form.Th_Buoi(class="form-control",value=chi_tiet['buoi'], id="example-text-input", disabled="disabled") }}
+                    </div>
+                    {% if form.Th_Buoi.errors %}
+                    <ul class=errors>
+                        {% for error in form.Th_Buoi.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="form-group row">
+
+                    {{ form.Th_Tiet.label(for="example-text-input",class="col-sm-2 col-form-label") }}
+                    <div class="col-sm-10">
+                        {{ form.Th_Tiet(class="form-control",value=chi_tiet['tiet'], id="example-text-input", disabled="disabled") }}
+                    </div>
+                    {% if form.Th_Tiet.errors %}
+                    <ul class=errors>
+                        {% for error in form.Th_Tiet.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="form-group row">
+                    {{ form.Th_Giao_vien.label(class="col-sm-2 col-form-label") }}
+                    <div class="col-sm-10">
+                        {{ form.Th_Giao_vien(class="form-control") }}
+                    </div>
+                    {% if form.Th_Giao_vien.errors %}
+                    <ul class=errors>
+                        {% for error in form.Th_Giao_vien.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="form-group row">
+                    {{ form.Th_Mon.label(class="col-sm-2 col-form-label") }}
+                    <div class="col-sm-10">
+                        {{ form.Th_Mon(class="form-control") }}
+                    </div>
+                    {% if form.Th_Mon.errors %}
+                    <ul class=errors>
+                        {% for error in form.Th_Mon.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <button type="submit" class="btn btn-primary waves-effect waves-light float-right">Cập nhật</button>
+            </form>
+        </div>
+    </div>
+    <!-- container-fluid -->
+</div>
+<!-- content -->
+
+{% endblock %}
+
+<!-- Script block -->
+
+{% block script %}
+
+{{ super()}}
+
+{% endblock %}

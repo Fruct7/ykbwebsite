@@ -1,0 +1,121 @@
+{% extends "web_layout/trang-chu-master.html" %}
+{% block head %}
+{{ super() }}
+{% block title %}Bài Đăng{% endblock %}
+{% endblock %}
+{% block content %}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card-box">
+                    <div class="row">
+                        {% for bai_dang in data|sort(attribute='ngay_dang', reverse=true) %}
+                        <div class="col-md-12">
+                            <div class="card m-b-20"
+                                style="border-radius: 5px; transition: transform 0.5s ease; cursor: pointer; background-color: #2A3142; font-family: 'Quicksand', sans-serif;"
+                                onmouseover="this.style.transform='scale(1.03)'"
+                                onmouseout="this.style.transform='scale(1)'"
+                                onclick="showDetail('{{ bai_dang.tieu_de|escape }}', '{{ bai_dang.noi_dung|escape }}', '{{ bai_dang.ngay_dang }}')">
+                                <div class="card-body">
+                                    <h5 class="card-title"
+                                        style="color: white; font-size: 24px; font-weight: bold; font-family: 'Quicksand', sans-serif;">
+                                        {{
+                                        bai_dang.tieu_de }}
+                                    </h5>
+                                    <p class="card-text"
+                                        style="color: white; opacity: 0.8; font-size: 14px; font-family: 'Quicksand', sans-serif;">
+                                        {{
+                                        bai_dang.noi_dung | truncate(100) }}
+                                    </p>
+                                    <div class="text-right">
+                                        <small style="color: white; font-family: 'Quicksand', sans-serif;">{{
+                                            bai_dang.ngay_dang }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function showDetail(tieu_de, noi_dung, ngay_dang) {
+        var detailModal = document.createElement('div');
+        detailModal.classList.add('detail-modal');
+        detailModal.style.position = 'fixed';
+        detailModal.style.top = '50%';
+        detailModal.style.left = '50%';
+        detailModal.style.transform = 'translate(-50%, -50%) scale(0)';
+        detailModal.style.zIndex = '9999';
+        detailModal.style.backgroundColor = '#2A3142';
+        detailModal.style.padding = '20px';
+        detailModal.style.borderRadius = '5px';
+        detailModal.style.width = '90%';
+        detailModal.style.maxHeight = '90%';
+        detailModal.style.overflowY = 'auto';
+        detailModal.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
+        detailModal.style.transition = 'transform 0.5s ease';
+        detailModal.style.fontFamily = 'Quicksand, sans-serif';
+        detailModal.style.fontSize = '15px';
+        detailModal.innerHTML = `
+        <button style="color: white; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer; position: absolute; top: 10px; right: 10px; border-radius: 50%; background-color: transparent; font-family: 'Quicksand', sans-serif;" onclick="closeModal();"></button>
+        <h2 style="font-weight: bold; color: white; font-family: 'Quicksand', sans-serif; font-size: 24px;">${tieu_de}</h2> <!-- Tăng kích cỡ tiêu đề -->
+        <p style="color: white; font-family: 'Quicksand', sans-serif; font-size: 16px;">${noi_dung}</p> <!-- Tăng kích cỡ nội dung -->
+        <p style="color: white; font-family: 'Quicksand', sans-serif; font-size: 16px;">${ngay_dang}</p> <!-- Tăng kích cỡ ngày đăng -->
+    `;
+        document.body.appendChild(detailModal);
+
+        var backdrop = document.createElement('div');
+        backdrop.classList.add('backdrop');
+        backdrop.style.position = 'fixed';
+        backdrop.style.top = '0';
+        backdrop.style.left = '0';
+        backdrop.style.width = '100%';
+        backdrop.style.height = '100%';
+        backdrop.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+        backdrop.style.zIndex = '9998';
+        backdrop.style.transition = 'opacity 0.5s ease';
+        backdrop.style.opacity = '0';
+        backdrop.onclick = function () { closeModal(); };
+        document.body.appendChild(backdrop);
+
+        setTimeout(() => {
+            detailModal.style.transform = 'translate(-50%, -50%) scale(1)';
+            backdrop.style.opacity = '1';
+        }, 0);
+
+        function closeModal() {
+            var detailModal = document.querySelector('.detail-modal');
+            var backdrop = document.querySelector('.backdrop');
+            if (detailModal && backdrop) {
+                detailModal.style.transform = 'translate(-50%, -50%) scale(0)';
+                backdrop.style.opacity = '0';
+                setTimeout(() => {
+                    document.body.removeChild(detailModal);
+                    document.body.removeChild(backdrop);
+                }, 500);
+            }
+        }
+    }
+</script>
+
+<style>
+    body {
+        background-color: #252735;
+    }
+
+    @media (max-width: 768px) {
+
+        .card-text,
+        .card-title,
+        .text-right small {
+            font-size: 12px;
+        }
+    }
+</style>
+
+{% endblock %}

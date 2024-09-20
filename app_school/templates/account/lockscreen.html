@@ -1,0 +1,47 @@
+{% extends "web_layout/account-layout.html" %}
+
+{% block content %}
+
+<div class="card">
+    <div class="card-body">
+
+        <div class="text-center">
+            <a href="/" class="logo"><img src="{{ url_for('static', filename = 'assets/images/logo-light.png') }}" height="22" alt="logo"></a>
+        </div>
+
+        <div class="p-3">
+            <h4 class="font-18 m-b-5 text-center">Locked</h4>
+            <p class="text-muted text-center">Nhập mật khẩu của bạn để unlocked trang thông tin</p>
+
+            <form class="form-horizontal m-t-30" >
+
+                <div class="user-thumb text-center m-b-30">
+                    <img src="{{ url_for('static', filename = 'assets/images/users/user-6.jpg') }}" class="rounded-circle img-thumbnail" alt="thumbnail">
+                    <h6>Robert Smith</h6>
+                </div>
+
+                <div class="form-group">
+                    <label for="userpassword">Mật khẩu</label>
+                    <input type="password" class="form-control" id="userpassword" placeholder="Enter password">
+                </div>
+
+                <div class="form-group row m-t-20">
+                    <div class="col-12 text-right">
+                        <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Unlock</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<div class="m-t-40 text-center">
+    <p>Không phải bạn? Trở về trang <a href="/login" class="font-500 text-primary"> Đăng nhập </a> </p>
+    {% block foot %}
+        {{ super() }}
+    {% endblock %}
+</div>
+
+{% endblock %}

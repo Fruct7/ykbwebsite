@@ -1,0 +1,97 @@
+{% extends "web_layout/giao-vien-master.html" %}
+
+<!-- Header Block -->
+
+{% block head %}
+
+{{ super()}}
+
+{% endblock %}
+
+<!-- Content Block -->
+
+{% block content %}
+
+<!-- Start content -->
+<div class="content">
+    <div class="container-fluid">
+
+        <div class="page-title-box">
+            <div class="row align-items-center">
+
+                <div class="col-sm-6">
+                    <h4 class="page-title">Lịch Thi</h4>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+        <div class="row">
+            <div class="col-md-6 m-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="POST">
+                            {{ form.csrf_token() }}
+                            <div class="form-group row">
+                                {{form.Th_Nien_khoa.label(class="col-sm-4 col-form-label",for="example-text-input") }}
+                                {{form.Th_Nien_khoa(class="col-sm-7 form-control",id="example-text-input")}}
+                            </div>
+                            <div class="form-group row">
+                                {{form.Th_Khoi.label(class="col-sm-4 col-form-label",for="example-text-input") }}
+                                {{form.Th_Khoi(class="col-sm-7 form-control",id="example-text-input")}}
+                                </select>
+                            </div>
+                            <div class="form-group text-center">
+                                <input class="btn btn-primary waves-light" type="submit" value="Xác nhận">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <!-- them thoi khoa bieu tai day -->
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Môn Thi</th>
+                        <th scope="col">Ngày Thi</th>
+                        <th scope="col">Thời Gian</th>
+                        <th scope="col">Thao Tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in lich_thi %}
+                        <tr>
+                        <th scope="row">{{lich_thi.index(i) + 1 }}</th>
+                        <td> {{i.ID_Mon}} </td>
+                        <td>{{i.ThoiGianThi}}</td>
+                        <td>{{i.ThoiGianLamBai}}</td>
+                        <td><a href="sua-lich-thi/{{i.NienKhoa}}/{{i.Khoi}}/{{i.Mon}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Chỉnh Sửa</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div><!-- end col -->
+    </div> <!-- end row -->
+
+</div>
+<!-- container-fluid -->
+</div>
+<!-- content -->
+
+{% endblock %}
+
+<!-- Script block -->
+
+{% block script %}
+
+{{ super()}}
+
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "web_layout/quan-ly-master.html" %}    
+{% block head %}
+
+{{ super()}}
+{% block title %} Trang xem tài khoản {% endblock %}
+
+{% endblock %}
+
+<!-- Content Block -->
+
+{% block content %}
+
+<div class="content">
+    <form method="POST">
+        <div class="col-md-12 col-lg-12 col-xl-12">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="card-header">
+                        <h4 style="color: whitesmoke;">Tài khoản với ID : {{Danh_sach_hs_chon['IDHocSinh']}} của học sinh {{Danh_sach_hs_chon['HoVaTen']}}</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-borderless mb-0">
+                                <tbody>
+                                        <tr>
+                                            <th scope="row"> ID học sinh</th>
+                                            <td>{{Danh_sach_hs_chon['IDHocSinh']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"> Họ và tên </th>
+                                            <td>{{Danh_sach_hs_chon['HoVaTen']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"> Giới tính </th>
+                                            <td>{{Danh_sach_hs_chon['GioiTinh']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"> Địa chỉ  </th>
+                                            <td>{{Danh_sach_hs_chon['DiaChi']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"> Email </th>
+                                            <td>{{Danh_sach_hs_chon['Email']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"> Ngày sinh </th>
+                                            <td>{{Danh_sach_hs_chon['NgaySinh']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"> Số điện thoại </th>
+                                            <td>{{Danh_sach_hs_chon['SoDienThoai']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"> Số điện thoại PH </th>
+                                            <td>{{Danh_sach_hs_chon['SoDienThoaiPhuHuynh']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"> Lớp  </th>
+                                            <td>{{Danh_sach_hs_chon['Lop']}} ( Với ID lớp : {{Danh_sach_hs_chon['IDLop']}})</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"> Niên khóa </th>
+                                            <td>{{Danh_sach_hs_chon['NienKhoa']}} ( Với ID niên khóa : {{Danh_sach_hs_chon['IDNienKhoa']}})</td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end col -->
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}
+
+<!-- Script block -->
+
+{% block script %}
+
+{{ super()}}
+
+
+
+{% endblock %}

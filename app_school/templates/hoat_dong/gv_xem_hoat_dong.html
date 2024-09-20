@@ -1,0 +1,99 @@
+{% extends "web_layout/giao-vien-master.html" %}
+
+<!-- Header Block -->
+
+{% block head %}
+
+{{ super()}}
+{% block title %} Học Sinh - Trang chủ {% endblock %}
+
+{% endblock %}
+
+<!-- Content Block -->
+
+{% block content %}
+
+<!-- Start content -->
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-6 m-auto">
+            <div class="card">
+                <div class="card-body">
+                    <form method="POST">
+                        {{ form.csrf_token() }}
+                        <div class="form-group row">
+                            {{form.Th_Nien_khoa.label(class="col-sm-4 col-form-label",for="example-text-input") }}
+                            {{form.Th_Nien_khoa(class="col-sm-7 form-control",id="example-text-input")}}
+                        </div>
+                        <div class="form-group text-center">
+                            <input class="btn btn-primary waves-light" type="submit" value="Xác nhận">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+    {% for i in hoat_dong  %}
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header" >
+                        <div class = "text-center">{{i.TieuDe}}</div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{i.NoiDung}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class = "text-center">
+                            <a href={{ "#hoat_dong"+ i.IDHoatDong }} data-toggle="modal" class="btn btn-primary btn-lg active" >Xem chi tiết</a>
+                            <a href={{ "/giao-vien/hoat-dong/sua-hoat-dong/" + i.IDHoatDong}} class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Sửa</a>
+                            <a href={{ "/giao-vien/hoat-dong/xoa-hoat-dong/" + i.IDHoatDong}} class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Xóa</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">       
+                    <div class="modal fade" id={{ "hoat_dong"+ i.IDHoatDong }} aria-hidden="true" style="display: none;">
+                        <div class="modal-dialog">
+                            <div class="modal-content">      
+                                <div class="modal-header">
+                                    <h4 class="modal-title"  >{{i.TieuDe}}</h4>           
+                                    <button class="close" type="button" data-dismiss="modal">×</button>
+                                </div>                
+                            
+                                <div align="center" class="modal-body"> 
+                                        Nội Dung: {{i.NoiDung}}
+                                        </br>
+                                        Người Tạo: {{i.NguoiTao}}
+                                        </br>
+                                        Thời Hạn: {{i.ThoiHan}}
+                                        </br>
+                                        Số Người Đã Tham Gia: {{i.SoNguoiThamGia}}
+                                        </br>
+                                </div>                
+                                
+                                <div class="modal-footer">
+                                    <a href={{ "/giao-vien/hoat-dong/danh-sach-nguoi-tham-gia/"+ i.IDHoatDong }}  class="btn btn-primary btn-lg active" >Xem Sách Người Tham Gia</a>
+                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Đóng</button>
+                                </div>                
+                            </div>
+                        </div>
+                    </div>        
+                </div>
+            </div>
+    {% endfor %}
+    </div>
+</div>
+<!-- content -->
+
+
+
+{% endblock %}
+
+<!-- Script block -->
+
+{% block script %}
+
+{{ super()}}
+
+{% endblock %}

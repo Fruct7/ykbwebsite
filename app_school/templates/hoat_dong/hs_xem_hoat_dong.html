@@ -1,0 +1,83 @@
+{% extends "web_layout/hoc-sinh-master.html" %}
+
+<!-- Header Block -->
+
+{% block head %}
+
+{{ super()}}
+{% block title %} Học Sinh - Trang chủ {% endblock %}
+
+{% endblock %}
+
+<!-- Content Block -->
+
+{% block content %}
+
+<!-- Start content -->
+<div class="content">
+    <div class="row">
+    {% for i in hoat_dong  %}
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header" >
+                        <div class = "text-center">{{i.TieuDe}}</div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{i.NoiDung}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class = "text-center">
+                            {% if  i.TinhTrang  == "Tham Gia" %}
+                                 <a href={{ "/hoc-sinh/hoat-dong/tham-gia/"+ i.IDHoatDong}} class="btn btn-primary btn-lg active" role="button" aria-pressed="true">{{ i.TinhTrang }}</a>
+                            {% else %}
+                                <a  href={{ "/hoc-sinh/hoat-dong/huy-tham-gia/"+ i.IDHoatDong}} class="btn btn-primary btn-lg active" role="button" aria-pressed="true">{{ i.TinhTrang }}</a>
+                            {% endif %}
+                           
+                            <a href={{ "#hoat_dong"+ i.IDHoatDong }} data-toggle="modal" class="btn btn-primary btn-lg active" >Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">       
+                    <div class="modal fade" id={{ "hoat_dong"+ i.IDHoatDong }} aria-hidden="true" style="display: none;">
+                        <div class="modal-dialog">
+                            <div class="modal-content">      
+                                <div class="modal-header">
+                                    <h4 class="modal-title"  >{{i.TieuDe}}</h4>           
+                                    <button class="close" type="button" data-dismiss="modal">×</button>
+                                </div>                
+                            
+                                <div align="center" class="modal-body"> 
+                                        Nội Dung: {{i.NoiDung}}
+                                        </br>
+                                        Người Tạo: {{i.NguoiTao}}
+                                        </br>
+                                        Thời Hạn: {{i.ThoiHan}}
+                                        </br>
+                                        Số Người Đã Tham Gia: {{i.SoNguoiThamGia}}
+                                        </br>
+                                </div>                
+                                
+                                <div class="modal-footer">
+                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Đóng</button>
+                                </div>                
+                            </div>
+                        </div>
+                    </div>        
+                </div>
+            </div>
+    {% endfor %}
+    </div>
+</div>
+<!-- content -->
+
+
+
+{% endblock %}
+
+<!-- Script block -->
+
+{% block script %}
+
+{{ super()}}
+
+{% endblock %}

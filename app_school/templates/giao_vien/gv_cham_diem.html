@@ -1,0 +1,251 @@
+{% extends "web_layout/giao-vien-master.html" %}
+
+<!-- Header Block -->
+
+{% block head %}
+
+{{ super()}}
+
+<!-- X-editable css -->
+<link type="text/css" href="{{ url_for('static', filename = 'plugins/x-editable/css/bootstrap-editable.css') }}"
+    rel="stylesheet">
+{% endblock %}
+
+<!-- Content Block -->
+
+{% block content %}
+
+<!-- Start content -->
+<div class="content">
+    <div class="container-fluid">
+
+        <!-- the hien ten page va options -->
+        <div class="page-title-box">
+            <div class="row align-items-center">
+
+                <div class="col-sm-6">
+                    <h4 class="page-title">Chỉnh điểm môn {{ bang_diem['mon']}} - {{ ten_hs }}</h4>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active">Thông tin điểm số theo từng môn của học sinh</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <h5 class="mb-3">Bảng điểm</h5>
+        <div class="table-responsive">
+            <table class="table table-striped mb-0">
+                <thead>
+                    <tr class="thead-dark">
+                        <th style="width: 50%;">Loại bài</th>
+                        <th>Điểm số</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>15 phút lần 1</td>
+                        <td>
+                            <a href="#" id="_15Phut_1_" data-type="text" data-pk="1"
+                                data-title="Nhập điểm">{{ bang_diem['15_phut'][1] if bang_diem['15_phut'][1] != None else "0" }}</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>15 phút lần 2</td>
+                        <td>
+                            <a href="#" id="_15Phut_2_" data-type="text" data-pk="1"
+                                data-title="Nhập điểm">{{ bang_diem['15_phut'][2] if bang_diem['15_phut'][2] != None else "0" }}</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>15 phút lần 3</td>
+                        <td>
+                            <a href="#" id="_15Phut_3_" data-type="text" data-pk="1"
+                                data-title="Nhập điểm">{{ bang_diem['15_phut'][3] if bang_diem['15_phut'][3] != None else "0" }}</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>15 phút lần 3</td>
+                        <td>
+                            <a href="#" id="_45Phut_1_" data-type="text" data-pk="1"
+                                data-title="Nhập điểm">{{ bang_diem['45_phut'][1] if bang_diem['45_phut'][1] != None else "0" }}</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>15 phút lần 3</td>
+                        <td>
+                            <a href="#" id="_45Phut_2_" data-type="text" data-pk="1"
+                                data-title="Nhập điểm">{{ bang_diem['45_phut'][2] if bang_diem['45_phut'][2] != None else "0" }}</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>15 phút lần 3</td>
+                        <td>
+                            <a href="#" id="_45Phut_3_" data-type="text" data-pk="1"
+                                data-title="Nhập điểm">{{ bang_diem['45_phut'][3] if bang_diem['45_phut'][3] != None else "0" }}</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Thi Học kỳ</td>
+                        <td>
+                            <a href="#" id="HocKy" data-type="text" data-pk="1"
+                                data-title="Nhập điểm">{{ (bang_diem['thi']) if bang_diem['thi'] != None else "0" }}</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <a class="btn btn-primary waves-effect waves-light mt-3" href="/thong-tin-diem-so/{{id_hoc_sinh}}">Quay
+                lại</a>
+        </div>
+    </div>
+    <!-- container-fluid -->
+</div>
+<!-- content -->
+
+{% endblock %}
+
+<!-- Script block -->
+
+{% block script %}
+
+{{ super()}}
+
+<!-- XEditable Plugin -->
+<script src="{{url_for('static' , filename = 'plugins/moment/moment.js') }}"></script>
+<script src="{{url_for('static' , filename = 'plugins/x-editable/js/bootstrap-editable.min.js') }}"></script>
+<script>
+    /*
+ Template Name: Veltrix - Responsive Bootstrap 4 Admin Dashboard
+ Author: Themesbrand
+ File: Xeditable js
+ */
+    
+    $(function () {
+    
+        //modify buttons style
+        $.fn.editableform.buttons =
+            '<button type="submit" id="checked" class="btn btn-success editable-submit btn-sm waves-effect waves-light"><i class="mdi mdi-check"></i></button>' +
+            '<button type="button" class="btn btn-danger editable-cancel btn-sm waves-effect waves-light"><i class="mdi mdi-close"></i></button>';
+
+
+        //inline
+
+
+        $('#_15Phut_1_').editable({
+            type: 'text',
+            mode: 'inline',
+            name: '_15Phut_1_',
+            pk: 1,
+            url: '/cap-nhat-diem/{{id_hoc_sinh}}/{{id_bd}}',
+            validate: function(value) {
+                if ($.isNumeric(value) == '') {
+                    return 'Chỉ được nhập điểm số';
+                }
+                if (value > 10 || value < 0) {
+                    return 'Chỉ được nhập 0 đến 10';
+                }
+            },
+            title: 'Nhập điểm'
+        });
+        $('#_15Phut_2_').editable({
+            type: 'text',
+            mode: 'inline',
+            name: '_15Phut_2_',
+            pk: 1,
+            url: '/cap-nhat-diem/{{id_hoc_sinh}}/{{id_bd}}',
+            validate: function(value) {
+                if ($.isNumeric(value) == '') {
+                    return 'Chỉ được nhập điểm số';
+                }
+                if (value > 10 || value < 0) {
+                    return 'Chỉ được nhập 0 đến 10';
+                }
+            },
+            title: 'Nhập điểm'
+        });
+        $('#_15Phut_3_').editable({
+            type: 'text',
+            mode: 'inline',
+            name: '_15Phut_3_',
+            pk: 1,
+            url: '/cap-nhat-diem/{{id_hoc_sinh}}/{{id_bd}}',
+            validate: function(value) {
+                if ($.isNumeric(value) == '') {
+                    return 'Chỉ được nhập điểm số';
+                }
+                if (value > 10 || value < 0) {
+                    return 'Chỉ được nhập 0 đến 10';
+                }
+            },
+            title: 'Nhập điểm'
+        });
+        $('#_45Phut_1_').editable({
+            type: 'text',
+            mode: 'inline',
+            name: '_45Phut_1_',
+            pk: 1,
+            url: '/cap-nhat-diem/{{id_hoc_sinh}}/{{id_bd}}',
+            validate: function(value) {
+                if ($.isNumeric(value) == '') {
+                    return 'Chỉ được nhập điểm số';
+                }
+                if (value > 10 || value < 0) {
+                    return 'Chỉ được nhập 0 đến 10';
+                }
+            },
+            title: 'Nhập điểm'
+        });
+        $('#_45Phut_2_').editable({
+            type: 'text',
+            mode: 'inline',
+            name: '_45Phut_2_',
+            pk: 1,
+            url: '/cap-nhat-diem/{{id_hoc_sinh}}/{{id_bd}}',
+            validate: function(value) {
+                if ($.isNumeric(value) == '') {
+                    return 'Chỉ được nhập điểm số';
+                }
+                if (value > 10 || value < 0) {
+                    return 'Chỉ được nhập 0 đến 10';
+                }
+            },
+            title: 'Nhập điểm'
+        });
+        $('#_45Phut_3_').editable({
+            type: 'text',
+            mode: 'inline',
+            name: '_45Phut_3_',
+            pk: 1,
+            url: '/cap-nhat-diem/{{id_hoc_sinh}}/{{id_bd}}',
+            validate: function(value) {
+                if ($.isNumeric(value) == '') {
+                    return 'Chỉ được nhập điểm số';
+                }
+                if (value > 10 || value < 0) {
+                    return 'Chỉ được nhập 0 đến 10';
+                }
+            },
+            title: 'Nhập điểm'
+        });
+        $('#HocKy').editable({
+            type: 'text',
+            mode: 'inline',
+            name: 'HocKy',
+            pk: 1,
+            url: '/cap-nhat-diem/{{id_hoc_sinh}}/{{id_bd}}',
+            validate: function(value) {
+                if ($.isNumeric(value) == '') {
+                    return 'Chỉ được nhập điểm số';
+                }
+                if (value > 10 || value < 0) {
+                    return 'Chỉ được nhập 0 đến 10';
+                }
+            },
+            title: 'Nhập điểm'
+        });
+
+
+
+    });
+</script>
+
+{% endblock %}

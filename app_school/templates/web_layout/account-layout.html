@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block head %}
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <title>Veltrix - Responsive Bootstrap 4 Admin Dashboard</title>
+    <meta content="Admin Dashboard" name="description" />
+    <meta content="Themesbrand" name="author" />
+    <link rel="shortcut icon" href="{{ url_for('static', filename = 'assets/images/favicon.ico') }}">
+
+    <link href="{{ url_for('static', filename = 'assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static', filename = 'assets/css/metismenu.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static', filename = 'assets/css/icons.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static', filename = 'assets/css/style.css') }}" rel="stylesheet" type="text/css">
+    {% endblock %}
+</head>
+
+<body>
+
+    <div class="home-btn d-none d-sm-block">
+        <a href="/" class="text-white"><i class="fas fa-home h2"></i></a>
+    </div>
+
+    <!-- Begin page -->
+    <div class="accountbg"></div>
+    <div class="wrapper-page account-page-full">
+        {% block content %}
+        {% block foot %}
+        <p style="color: white;text-decoration: none;">© 2024 Copyright By <a style="color: white;" target="_blank"
+                href="https://fruct7.vercel.app">Nguyễn Tiến Minh |
+                Fruct7</a></p>
+        {% endblock %}
+        {% endblock %}
+    </div>
+    <!-- end wrapper-page -->
+
+    {% block script %}
+    <!-- jQuery  -->
+    <script src="{{ url_for('static', filename = 'assets/js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename = 'assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename = 'assets/js/metisMenu.min.js') }}"></script>
+    <script src="{{ url_for('static', filename = 'assets/js/jquery.slimscroll.js') }}"></script>
+    <script src="{{ url_for('static', filename = 'assets/js/waves.min.js') }}"></script>
+    <!-- App js -->
+    <script src="{{ url_for('static', filename = 'assets/js/app.js') }}"></script>
+    {% endblock %}
+
+</body>
+
+</html>

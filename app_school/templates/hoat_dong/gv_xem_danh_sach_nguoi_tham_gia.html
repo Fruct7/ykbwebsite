@@ -1,0 +1,77 @@
+{% extends "web_layout/hoc-sinh-master.html" %}
+
+<!-- Header Block -->
+
+{% block head %}
+
+{{ super()}}
+{% block title %} Học Sinh - Trang chủ {% endblock %}
+
+{% endblock %}
+
+<!-- Content Block -->
+
+{% block content %}
+
+
+<!-- Start content -->
+<div class="content">
+    <div class="container-fluid">
+
+        <div class="page-title-box">
+            <div class="row align-items-center">
+
+                <div class="col-sm-6">
+                    <h4 class="page-title">Bảng Điểm</h4>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <!-- them thoi khoa bieu tai day -->
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Học Sinh</th>
+                        <th scope="col">Lớp</th>
+                        <th scope="col">Ngày Đăng Ký</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in danhsach %}
+                        <tr>
+                        <th scope="row">{{danhsach.index(i) + 1 }}</th>
+                        <td> {{i.HocSinh}} </td>
+                        <td> {{i.Lop}} </td>
+                        <td> {{i.NgayDangKy}} </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="card-footer">
+                   Số Người Tham Gia: {{So_nguoi}}
+                </div>
+            </div>
+
+        </div><!-- end col -->
+    </div> <!-- end row -->
+
+</div>
+<!-- container-fluid -->
+</div>
+<!-- content -->
+{% endblock %}
+
+<!-- Script block -->
+
+{% block script %}
+
+{{ super()}}
+
+{% endblock %}

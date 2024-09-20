@@ -1,0 +1,129 @@
+{% extends "web_layout/quan-ly-master.html" %}
+
+<!-- Header Block -->
+
+{% block head %}
+
+{{ super()}}
+{% block title %} Quản lý - Trang chủ {% endblock %}
+
+{% endblock %}
+
+<!-- Content Block -->
+
+{% block content %}
+
+<!-- Start content -->
+<div class="content">
+    <div class="container-fluid">
+        <div class="page-title-box">
+            <div class="row align-items-center">
+
+                <div class="col-sm-6">
+                    <h4 class="page-title">Profile</h4>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active">Quản lý</li>
+                    </ol>
+
+                </div>
+                <div class="col-sm-6">
+
+                    <div class="float-right d-none d-md-block">
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle arrow-none waves-effect waves-light"
+                                type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="mdi mdi-settings mr-2"></i> Cài đặt
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="/quan-li/sua-quan-li">Chỉnh sửa profile</a>
+                                <a class="dropdown-item" href="/quan-li/doi-mat-khau">Đổi mật khẩu</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-xl-4">
+                <div class="card h-100">
+                    <img class="img-thumbnail card-img-top" alt="200x200" width="200"
+                        src="{{ url_for('static', filename = 'assets/images/small/img-3.jpg') }}"
+                        data-holder-rendered="true" alt="Card image cap">
+
+                    <div class="card-body">
+                        <h4 class="card-title font-16 mt-0"> {{quan_li['HoVaTen']}}</h4>
+                        <p class="card-text">{{quan_li['DiaChi']}}</p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">{{quan_li['NgaySinh']}}</li>
+                            <li class="list-group-item">{{quan_li['GioiTinh']}}</li>
+                            <li class="list-group-item">{{quan_li['SoDienThoai']}}</li>
+                            <li class="list-group-item"><a href="/quan-li/sua-quan-li">Chỉnh sửa profile</a></li>
+                            <li class="list-group-item"><a href="/quan-li/doi-mat-khau">Đổi mật khẩu</a></li>
+                        </ul>
+                    
+                    </div>
+                </div>
+            </div><!-- end col -->
+
+            <div class="col-md-6 col-lg-6 col-xl-8">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="card-header">
+                            <h4>Thông tin cá nhân</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-borderless mb-0">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Họ và Tên</th>
+                                            <td>{{quan_li['HoVaTen']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Giới tinh</th>
+                                            <td>{{quan_li['GioiTinh']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Ngày sinh</th>
+                                            <td>{{quan_li['NgaySinh']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Địa chỉ</th>
+                                            <td>{{quan_li['DiaChi']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Số điện thoai</th>
+                                            <td>{{quan_li['SoDienThoai']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Email</th>
+                                            <td>{{quan_li['Email']}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- end col -->
+            </div>
+
+        </div>
+    </div>
+    <!-- container-fluid -->
+
+</div>
+<!-- content -->
+
+
+
+{% endblock %}
+
+<!-- Script block -->
+
+{% block script %}
+
+{{ super()}}
+
+{% endblock %}

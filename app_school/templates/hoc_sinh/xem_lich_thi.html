@@ -1,0 +1,73 @@
+{% extends "web_layout/hoc-sinh-master.html" %}
+
+<!-- Header Block -->
+
+{% block head %}
+
+{{ super()}}
+{% block title %} Học Sinh - Trang chủ {% endblock %}
+
+{% endblock %}
+
+<!-- Content Block -->
+
+{% block content %}
+
+
+<!-- Start content -->
+<div class="content">
+    <div class="container-fluid">
+
+        <div class="page-title-box">
+            <div class="row align-items-center">
+
+                <div class="col-sm-6">
+                    <h4 class="page-title">Lịch Thi</h4>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <!-- them thoi khoa bieu tai day -->
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Môn Thi</th>
+                        <th scope="col">Ngày Thi</th>
+                        <th scope="col">Thời Gian</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in lich_thi %}
+                        <tr>
+                        <th scope="row">{{lich_thi.index(i) + 1 }}</th>
+                        <td> {{i.ID_Mon}} </td>
+                        <td>{{i.ThoiGianThi}}</td>
+                        <td>{{i.ThoiGianLamBai}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div><!-- end col -->
+    </div> <!-- end row -->
+
+</div>
+<!-- container-fluid -->
+</div>
+<!-- content -->
+{% endblock %}
+
+<!-- Script block -->
+
+{% block script %}
+
+{{ super()}}
+
+{% endblock %}

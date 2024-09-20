@@ -1,0 +1,125 @@
+{% extends "web_layout/account-layout.html" %}
+
+{% block head %}
+{{super()}}
+
+
+<!-- Sweet Alert -->
+<link href="{{ url_for('static', filename = 'plugins/sweet-alert2/sweetalert2.min.css') }}" rel="stylesheet"
+    type="text/css">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="card">
+    <div class="card-body">
+
+        <h3 class="text-center">
+            <a href="/" class="logo"><img src="{{ url_for('static', filename = 'assets/images/logo-light.png') }}"
+                    height="22" alt="logo"></a>
+        </h3>
+
+        <div class="p-3">
+            <h4 class="font-18 m-b-5 text-center">Đăng ký tài khoản</h4>
+            <p class="text-muted text-center">Đăng ký tài khoản để truy cập vào trang thông tin</p>
+
+            <form id="registerForm" class="form-horizontal m-t-30" method="POST">
+                {{ form.csrf_token }}
+                {% if form.csrf_token.errors %}
+                <div class="warning">You have submitted an invalid CSRF token</div>
+                {% endif %}
+
+                <div class="form-group">
+                    {{ form.Th_Email.label }}
+                    {{ form.Th_Email(type="email",class="form-control",id="useremail",placeholder="Enter email") }}
+                    {% if form.Th_Email.errors %}
+                    <ul class=errors>
+                        {% for error in form.Th_Email.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ form.Th_Taikhoan.label }}
+                    {{ form.Th_Taikhoan(type="text",class="form-control",id="username",placeholder="Enter username") }}
+                    {% if form.Th_Taikhoan.errors %}
+                    <ul class=errors>
+                        {% for error in form.Th_Taikhoan.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ form.Th_Matkhau.label }}
+                    {{ form.Th_Matkhau(type="password",class="form-control",id="userpassword",placeholder="Enter password") }}
+                    {% if form.Th_Matkhau.errors %}
+                    <ul class=errors>
+                        {% for error in form.Th_Matkhau.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ form.Th_Mat_khau_xac_nhan.label }}
+                    {{ form.Th_Mat_khau_xac_nhan(type="password",class="form-control",id="userpassword",placeholder="Enter confirm password") }}
+                    {% if form.Th_Mat_khau_xac_nhan.errors %}
+                    <ul class=errors>
+                        {% for error in form.Th_Mat_khau_xac_nhan.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+
+                <div class="form-group row m-t-20">
+                    <div class="col-12 text-right">
+                        <button class="btn btn-primary waves-effect waves-light" id="sa-warning" type="button">Đăng
+                            ký</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<div class="m-t-40 text-center">
+    <p>Bạn đã có tài khoản ? <a href="/login" class="font-500 text-primary"> Đăng nhập </a> </p>
+    {% block foot %}
+    {{ super() }}
+    {% endblock %}
+</div>
+
+{% endblock %}
+
+{% block script %}
+{{ super() }}
+
+<!-- Sweet-Alert  -->
+<script src="{{ url_for('static', filename = 'plugins/sweet-alert2/sweetalert2.min.js') }}"></script>
+<script>
+    $('#sa-warning').click(function () {
+        Swal.fire({
+            title: "Bạn có chắc không?",
+            text: "Bạn có muốn tạo tài khoản",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#02a499",
+            cancelButtonColor: "#ec4561",
+            confirmButtonText: "Vâng, tôi muốn!"
+        }).then(function (result) {
+            if (result.value) {
+                document.getElementById("registerForm").submit();
+            }
+        });
+    });
+</script>
+{% endblock %}

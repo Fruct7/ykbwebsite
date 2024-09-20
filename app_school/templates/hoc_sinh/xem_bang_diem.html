@@ -1,0 +1,89 @@
+{% extends "web_layout/hoc-sinh-master.html" %}
+
+<!-- Header Block -->
+
+{% block head %}
+
+{{ super()}}
+{% block title %} Học Sinh - Trang chủ {% endblock %}
+
+{% endblock %}
+
+<!-- Content Block -->
+
+{% block content %}
+
+
+<!-- Start content -->
+<div class="content">
+    <div class="container-fluid">
+
+        <div class="page-title-box">
+            <div class="row align-items-center">
+
+                <div class="col-sm-6">
+                    <h4 class="page-title">Bảng Điểm</h4>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <!-- them thoi khoa bieu tai day -->
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Môn</th>
+                        <th scope="col">15 Phút(1)</th>
+                        <th scope="col">15 Phút(2)</th>
+                        <th scope="col">15 Phút(3)</th>
+                        <th scope="col">45 Phút(1)</th>
+                        <th scope="col">45 Phút(2)</th>
+                        <th scope="col">45 Phút(3)</th>
+                        <th scope="col">Thi</th>
+                        <th scope="col">Trung Bình</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in bangdiem %}
+                        <tr>
+                        <th scope="row">{{bangdiem.index(i) + 1 }}</th>
+                        <td> {{i.IDMon}} </td>
+                        <td> {{i._15Phut_1_}} </td>
+                        <td> {{i._15Phut_2_}} </td>
+                        <td> {{i._15Phut_3_}} </td>
+                        <td> {{i._45Phut_1_}} </td>
+                        <td> {{i._45Phut_2_}} </td>
+                        <td> {{i._45Phut_3_}} </td>
+                        <td> {{i.HocKy}} </td>
+                        <td> {{i.TrungBinhMon}} </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="card-footer text-muted">
+                   Điểm Trung Bình: {{DiemTB}}
+                </div>
+            </div>
+
+        </div><!-- end col -->
+    </div> <!-- end row -->
+
+</div>
+<!-- container-fluid -->
+</div>
+<!-- content -->
+{% endblock %}
+
+<!-- Script block -->
+
+{% block script %}
+
+{{ super()}}
+
+{% endblock %}

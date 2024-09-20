@@ -1,0 +1,52 @@
+{% extends "web_layout/quan-ly-master.html" %}    
+{% block head %}
+
+{{ super()}}
+{% block title %} Trang xem tài khoản {% endblock %}
+
+{% endblock %}
+
+<!-- Content Block -->
+
+{% block content %}
+
+<div class="content">
+    <form method="POST">
+        <div class="col-md-12 col-lg-12 col-xl-12">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="card-header">
+                        <h4 style="color: whitesmoke;">Các tài khoản giáo viên đang hoạt động</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-borderless mb-0">
+                                <tbody>
+                                    {% for hs in Danh_sach_hs %}
+                                        <tr>
+                                            <th scope="row"><a href="/quan-li/xem-tai-khoan-hs/{{hs['IDHocSinh']}}">{{hs['IDHocSinh']}}</a></th>
+                                            <td><a href="/quan-li/xem-tai-khoan-hs/{{hs['IDHocSinh']}}">{{hs['HoVaTen']}} - {{hs['Lop']}} - {{hs['NienKhoa']}} - {{hs['Email']}}</a></td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end col -->
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}
+
+<!-- Script block -->
+
+{% block script %}
+
+{{ super()}}
+
+
+
+{% endblock %}

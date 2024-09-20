@@ -1,0 +1,85 @@
+{% extends "web_layout/quan-ly-master.html" %}
+{% block head %}
+
+{{ super()}}
+{% block title %} Trang tạo tài khoản {% endblock %}
+
+{% endblock %}
+
+<!-- Content Block -->
+
+{% block content %}
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="col-md-12" style="text-align: center;">
+                    <form action="#" method="post">
+                        <div>
+                            <h2 style="color: whitesmoke;">Tạo tài khoản HS</h2>
+                            <br />
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 form-group ">
+                                <input name="Th_Id_hoc_sinh" class="form-control" id="name" placeholder="Id học sinh" type="text"
+                                    required spellcheck="false" autocomplete="off" value="{{Id_hoc_sinh}}"> 
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 form-group ">
+                                <input name="Th_Mat_khau" class="form-control" id="name" placeholder="Mật khẩu" type="text"
+                                    required spellcheck="false" autocomplete="off" value="{{Mat_khau}}"> 
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 form-group ">
+                                <input name="Th_Ho_va_ten" class="form-control" id="name" placeholder="Họ và tên" type="text"
+                                    required spellcheck="false" autocomplete="off" value="{{Ho_va_ten}}"> 
+                            </div>
+                        </div>
+                        <div class="row email-bar">
+                            <div class="col-sm-12 form-group ">
+                                <input name="Th_email" class="form-control" id="email" placeholder="Email" type="email"
+                                    required spellcheck="false" autocomplete="off" value="{{email}}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 form-group ">
+                                <input name="Th_Lop" class="form-control" id="name" placeholder="ID Lớp" type="text"
+                                    required spellcheck="false" autocomplete="off" value="{{Lop}}"> 
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 form-group ">
+                                <input name="Th_Nien_khoa" class="form-control" id="name" placeholder="ID Niên khóa" type="text"
+                                    required spellcheck="false" autocomplete="off" value="{{Nien_khoa}}"> 
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <button class="btn btn-primary btn-lg" type="submit" id="btn">Tạo tài khoản</button>
+                            </div>
+                        </div>
+                        <script language="javascript">
+                            var button = document.getElementById("btn");
+                            button.onclick = function(){
+                                alert("Tạo tài khoản thành công !");
+                            }
+                        </script>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+<!-- Script block -->
+
+{% block script %}
+
+{{ super()}}
+
+{% endblock %}

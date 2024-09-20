@@ -1,0 +1,86 @@
+{% extends "web_layout/quan-ly-master.html" %}    
+{% block head %}
+
+{{ super()}}
+{% block title %} Trang xem tài khoản {% endblock %}
+
+{% endblock %}
+
+<!-- Content Block -->
+
+{% block content %}
+
+<div class="content">
+    <form method="POST">
+        <div class="col-md-12 col-lg-12 col-xl-12">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="card-header">
+                        <h4 style="color: whitesmoke;">Tài khoản {{Danh_sach_gv_chon['TenDangNhap']}} của giáo viên {{Danh_sach_gv_chon['HoVaTen']}}</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-borderless mb-0">
+                                <tbody>
+                                        <tr>
+                                            <th scope="row"> ID Giáo Viên</th>
+                                            <td>{{Danh_sach_gv_chon['IDGiaoVien']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"> Tên đăng nhập </th>
+                                            <td>{{Danh_sach_gv_chon['TenDangNhap']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"> Họ và tên </th>
+                                            <td>{{Danh_sach_gv_chon['HoVaTen']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"> Giới tính </th>
+                                            <td>{{Danh_sach_gv_chon['GioiTinh']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"> Địa chỉ  </th>
+                                            <td>{{Danh_sach_gv_chon['DiaChi']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"> Email </th>
+                                            <td>{{Danh_sach_gv_chon['Email']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"> Ngày sinh </th>
+                                            <td>{{Danh_sach_gv_chon['NgaySinh']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"> Số điện thoại </th>
+                                            <td>{{Danh_sach_gv_chon['SoDienThoai']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"> Trình độ  </th>
+                                            <td>{{Danh_sach_gv_chon['TrinhDo']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"> Chuyên môn </th>
+                                            <td>{{Danh_sach_gv_chon['ChuyenMon']}}</td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end col -->
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}
+
+<!-- Script block -->
+
+{% block script %}
+
+{{ super()}}
+
+
+
+{% endblock %}
