@@ -3936,33 +3936,7 @@ Invoice
   line-height: 150px;
 }
 
-.accountbg {
-  background: url("../images/bg.jpg");
-  position: absolute;
-  background-size: cover;
-  background-position: center;
-  height: 100%;
-  width: 100%;
-  top: 0;
-}
 
-.account-page-full {
-  left: 0;
-  position: absolute;
-  height: 100%;
-  margin: 0;
-  width: 420px;
-  background-color: #222836;
-}
-
-.account-page-full .logo {
-  line-height: 70px;
-}
-
-.account-page-full .card {
-  -webkit-box-shadow: none;
-          box-shadow: none;
-}
 
 /* ======
 35. Responsive

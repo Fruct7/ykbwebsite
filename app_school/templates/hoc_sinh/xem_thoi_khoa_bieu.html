@@ -1,114 +1,140 @@
 {% extends "web_layout/hoc-sinh-master.html" %}
 
-<!-- Header Block -->
-
 {% block head %}
-
-{{ super()}}
-
+{{ super() }}
 
 <!-- Plugins css -->
-<link href="{{url_for('static',filename = 'plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') }}"
-    rel="stylesheet">
-<link href="{{url_for('static',filename = 'plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}"
-    rel="stylesheet">
-<link href="{{url_for('static',filename = 'plugins/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{url_for('static',filename = 'plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css') }}"
-    rel="stylesheet" />
+<link href="{{ url_for('static', filename='plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='plugins/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ url_for('static', filename='plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css') }}" rel="stylesheet">
+
+<style>
+    .table-responsive {
+        overflow-x: auto;
+    }
+    .table th, .table td {
+        text-align: center;
+        vertical-align: middle;
+        padding: 0.5rem;
+    }
+    .table thead th {
+        font-weight: bold;
+
+    }
+    .table-bordered {
+        border: 1px solid #dee2e6;
+    }
+    .card {
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        border-radius: 0.5rem;
+    }
+    .card-header {
+        border-bottom: 1px solid #dee2e6;
+        padding: 1rem;
+
+    }
+    .page-title {
+        margin-bottom: 1rem;
+    }
+    .subject {
+        font-weight: bold;
+        color: #007bff;
+    }
+    .teacher {
+        font-style: italic;
+        color: #28a745;
+    }
+    .day {
+        font-weight: bold;
+    }
+    .content {
+        display: flex;
+        align-items: center;
+        min-height: 100vh;
+    }
+</style>
 {% endblock %}
 
-<!-- Content Block -->
-
 {% block content %}
-
-<!-- Start content -->
 <div class="content">
     <div class="container-fluid">
-
-        <div class="page-title-box">
-            <div class="row align-items-center">
-
-                <div class="col-sm-6">
-                    <h4 class="page-title">Thời khóa biểu</h4>
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Thời khóa biểu</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Buổi</th>
+                                        <th>Tiết</th>
+                                        <th class="day">Thứ 2</th>
+                                        <th class="day">Thứ 3</th>
+                                        <th class="day">Thứ 4</th>
+                                        <th class="day">Thứ 5</th>
+                                        <th class="day">Thứ 6</th>
+                                        <th class="day">Thứ 7</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td rowspan="5" class="align-middle">Sáng</td>
+                                    </tr>
+                                    {% for tiet in tkb[0] %}
+                                    <tr>
+                                        <th scope="row">{{ loop.index }}</th>
+                                        {% for chi_tiet in tiet %}
+                                        <td>
+                                            {% if chi_tiet %}
+                                            <div class="subject">{{ chi_tiet.subject }}</div>
+                                            <div class="teacher">{{ chi_tiet.teacher }}</div>
+                                            {% endif %}
+                                        </td>
+                                        {% endfor %}
+                                    </tr>
+                                    {% endfor %}
+                                    <tr>
+                                        <td rowspan="5" class="align-middle">Chiều</td>
+                                    </tr>
+                                    {% for tiet in tkb[1] %}
+                                    <tr>
+                                        <th scope="row">{{ loop.index }}</th>
+                                        {% for chi_tiet in tiet %}
+                                        <td>
+                                            {% if chi_tiet %}
+                                            <div class="subject">{{ chi_tiet.subject }}</div>
+                                            <div class="teacher">{{ chi_tiet.teacher }}</div>
+                                            {% endif %}
+                                        </td>
+                                        {% endfor %}
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- end row -->
     </div>
-
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <!-- them thoi khoa bieu tai day -->
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Buổi</th>
-                            <th scope="col">Tiết</th>
-                            <th scope="col" style="width: 15%;">Thứ 2</th>
-                            <th scope="col" style="width: 15%;">Thứ 3</th>
-                            <th scope="col" style="width: 15%;">Thứ 4</th>
-                            <th scope="col" style="width: 15%;">Thứ 5</th>
-                            <th scope="col" style="width: 15%;">Thứ 6</th>
-                            <th scope="col" style="width: 15%;">Thứ 7</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td rowspan="5">Sáng</td>
-                        </tr>
-                        {% for tiet in tkb[0] %}
-                        <tr>
-                            <th scope="row">{{ loop.index }}</th>
-                            {% set id_tiet = loop.index %}
-                            {% for chi_tiet in tiet %}
-                             <td>{{chi_tiet}}</td>
-                            {% endfor %}
-                        </tr>
-                        {% endfor %}
-
-                        <tr>
-                            <td rowspan="5">Chiều</td>
-                        </tr>
-                        {% for tiet in tkb[1] %}
-                        <tr>
-                            <th scope="row">{{ loop.index }}</th>
-                            {% set id_tiet = loop.index %}
-                            {% for chi_tiet in tiet %}
-                                <td>{{chi_tiet}}</td>
-                            {% endfor %}
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </div><!-- end col -->
-    </div> <!-- end row -->
-
 </div>
-<!-- container-fluid -->
-</div>
-<!-- content -->
-
 {% endblock %}
 
-<!-- Script block -->
-
 {% block script %}
-
-{{ super()}}
-
+{{ super() }}
 
 <!-- Plugins js -->
-<script
-    src="{{ url_for('static', filename = 'plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}"></script>
-<script src="{{ url_for('static', filename = 'plugins/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
-<script src="{{ url_for('static', filename = 'plugins/select2/js/select2.min.js') }}"></script>
-<script src="{{ url_for('static', filename = 'plugins/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
-<script src="{{ url_for('static', filename = 'plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js') }}"></script>
-<script
-    src="{{ url_for('static', filename = 'plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js') }}"></script>
+<script src="{{ url_for('static', filename='plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}"></script>
+<script src="{{ url_for('static', filename='plugins/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
+<script src="{{ url_for('static', filename='plugins/select2/js/select2.min.js') }}"></script>
+<script src="{{ url_for('static', filename='plugins/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
+<script src="{{ url_for('static', filename='plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js') }}"></script>
 
 <!-- Plugins Init js -->
-<script src="assets/pages/form-advanced.js"></script>
+<script src="{{ url_for('static', filename='assets/pages/form-advanced.js') }}"></script>
 {% endblock %}
